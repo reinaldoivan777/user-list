@@ -26,16 +26,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 searchInput.addEventListener("keyup", () => {
   let query = searchInput.value;
-  var pattern = new RegExp("^" + query + ".*$", "i");
   userList.innerHTML = "";
   notFound.innerText = "";
 
   if (query) {
     let filteredUsers = users.filter(
       (user) =>
-        user?.first_name?.match(pattern) ||
-        user?.last_name?.match(pattern) ||
-        user?.email?.match(pattern)
+        user?.first_name?.toLowerCase().includes(query.toLowerCase()) ||
+        user?.last_name?.toLowerCase().includes(query.toLowerCase()) ||
+        user?.email?.toLowerCase().includes(query.toLowerCase())
     );
 
     if (filteredUsers.length) filteredUsers.map((user) => renderData(user));
