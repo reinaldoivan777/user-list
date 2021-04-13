@@ -1,15 +1,11 @@
 let userList = document.getElementById("users");
 
 function renderData(user) {
-  let userCard = `<div class="col-lg-3 col-12 text-center my-3">
-  <div class="card">
-      <div class="card-body">
-          <img style="border-radius: 100px;" src="${user?.avatar}" class="img-fluid text-center"/>
-          <p>${user?.first_name}</p>
-          <h6 class="mt-3 text-success">${user?.first_name} ${user?.last_name}</h6>
-          <p>${user?.email}</p>
-      </div>
-  </div>
+  let userCard = `<div class='card__user'>
+  <img class="avatar" src="${user?.avatar}" class="img-fluid text-center"/>
+  <p>${user?.first_name}</p>
+  <h6>${user?.first_name} ${user?.last_name}</h6>
+  <p>${user?.email}</p>
 </div>`;
   userList.innerHTML += userCard;
 }
