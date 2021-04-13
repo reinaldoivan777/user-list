@@ -15,15 +15,39 @@
   border-radius: 4px;
   overflow: hidden;
   align-items: center;
-  width: 200px;
-  height: 250px;
+  width: 150px;
+  height: 200px;
   margin-bottom: 16px;
+  background-color: #f7f7f7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card__user:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .avatar {
   border-radius: 50%;
   object-fit: cover;
   width: 100px;
+  margin-bottom: 16px;
+}
+
+.username {
+  font-size: 14px;
+  color: #198754;
+  margin-bottom: 8px;
+}
+
+.fullname {
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.email {
+  color: #636869;
 }
 
 @media only screen and (max-width: 1024px) {
