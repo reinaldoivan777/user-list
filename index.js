@@ -1,4 +1,7 @@
 let userList = document.getElementById("users");
+let searchInput = document.getElementById("search__input");
+let notFound = document.getElementById("not__found");
+var users = [];
 
 function renderData(user) {
   let userCard = `<div class='card__user'>
@@ -10,10 +13,34 @@ function renderData(user) {
   userList.innerHTML += userCard;
 }
 
-fetch("https://reqres.in/api/users/")
-  .then((response) => response.json())
-  .then((data) =>
-    data?.data?.map((user) => {
-      renderData(user);
-    })
-  );
+document.addEventListener("DOMContentLoaded", (event) => {
+  fetch("https://reqres.in/api/users/")
+    .then((response) => response.json())
+    .then((data) =>
+      data?.data?.map((user) => {
+        renderData(user);
+        users.push(user);
+      })
+    );
+});
+
+searchInput.addEventListener("keyup", () => {
+  let query = searchInput.value;
+  var pattern = new RegExp("^" + query + ".*$", "i");
+  userList.innerHTML = "";
+  notFound.innerText = "";
+
+  if (query) {
+    let filteredUsers = users.filter(
+      (user) =>
+        user?.first_name?.match(pattern) ||
+        user?.last_name?.match(pattern) ||
+        user?.email?.match(pattern)
+    );
+
+    if (filteredUsers.length) filteredUsers.map((user) => renderData(user));
+    else notFound.innerText = "User not found!";
+  } else {
+    users.map((user) => renderData(user));
+  }
+});
